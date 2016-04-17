@@ -2,19 +2,19 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
 
-import '../../ui/layouts/empty_layout.js';
-import '../../ui/layouts/visitor_layout.js';
-import '../../ui/layouts/admin_layout.js';
+import '../../client/layouts/empty_layout.js';
+import '../../client/layouts/visitor_layout.js';
+import '../../client/layouts/admin_layout.js';
 
-import '../../ui/pages/page_notFound.js';
-import '../../ui/pages/visitor_home.js';
-import '../../ui/pages/visitor_welcome.js';
-import '../../ui/pages/visitor_judge.js';
-import '../../ui/pages/visitor_vote.js';
-import '../../ui/pages/admin_home.js';
-import '../../ui/pages/admin_login.js';
-import '../../ui/pages/admin_judge.js';
-import '../../ui/pages/admin_vote.js';
+import '../../client/pages/page_notFound.js';
+import '../../client/pages/visitor_home.js';
+import '../../client/pages/visitor_welcome.js';
+import '../../client/pages/visitor_judge.js';
+import '../../client/pages/visitor_vote.js';
+import '../../client/pages/admin_home.js';
+import '../../client/pages/admin_login.js';
+import '../../client/pages/admin_judge.js';
+import '../../client/pages/admin_vote.js';
 
 
 var rootRoutes = FlowRouter.group({

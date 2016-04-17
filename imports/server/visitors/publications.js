@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor'
 
-import { Visitors } from '../Visitors.js'
+import { Visitors } from './visitors.js'
 
 
 

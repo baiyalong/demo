@@ -5,7 +5,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 export const Visitors = new Mongo.Collection('Visitors');
 
 Visitors.allow({
-  // insert() { return true; },
+  insert() { return true; },
   update() { return true; },
   remove() { return true; },
 });

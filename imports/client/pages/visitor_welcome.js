@@ -10,7 +10,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 // import '../components/loading.js';
 import '../lib/compatibility.js';
 import { displayError } from '../lib/errors.js';
-import '../../api/visitors/methods.js';
+// import '../../server/visitors/methods.js';
 
 
 Template.visitor_welcome.onCreated(() => {
