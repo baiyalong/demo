@@ -1,0 +1,24 @@
+<template name="admin_judge">
+    <div class="admin_judge">
+        
+        <input type="text" id='judge_number' />
+        <input type="button" value="随机评委" id='random_judge' />
+        <input type="button" value="开始评分" id='active_judge' />
+        <input type="button" value="重置" id='active_reset' />
+        
+        <h1>评分</h1>
+
+        {{>admin_visitors}}
+
+<form>
+   <p>添加条目</p>    
+    标题<input type="text" id="title" />
+    申请者<input type="text" id="player_1" />
+    参与者<input type="text" id="player_2" />
+    参与者<input type="text" id="player_3" />
+    <input type="button" value="保存" id='saveItem' />
+</form>
+
+{{>visitor_judge}}
+    </div>
+</template>

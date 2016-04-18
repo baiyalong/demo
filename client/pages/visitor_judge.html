@@ -1,0 +1,37 @@
+<template name="visitor_judge">
+    <div class="visitor_judge">
+        
+<table>
+    <thead>
+        <tr>
+            <th>标题</th>
+            <th>申请者</th>
+            <th>参与者</th>
+            <th>参与者</th>
+            {{#if role_is_judge}}
+            <th>我的打分</th>
+            {{/if}}
+            <th>评委打分</th>
+            <th>最终得分</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each judge_list}}
+        <tr id='{{_id}}'>
+            <td>{{title}}</td>
+            <td>{{player_1}}</td>
+            <td>{{player_2}}</td>
+            <td>{{player_3}}</td>
+            {{#if role_is_judge}}
+            <td><input type="number"/></td>
+            {{/if}}
+            <td>{{scores}}</td>
+            <td>{{score_final}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+    </div>
+</template>

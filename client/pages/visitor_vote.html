@@ -1,0 +1,31 @@
+<template name="visitor_vote">
+    <div class="visitor_vote">
+        
+<table>
+    <thead>
+        <tr>
+            <th>标题</th>
+            <th>选项1</th>
+            <th>选项2</th>
+            <th>选项3</th>
+            <th>选项4</th>
+            <th>最终结果</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each vote_list}}
+        <tr id='{{_id}}'>
+            <td>{{title}}</td>
+            <td><input type="radio" name='{{_id}}'/>{{option_1}}</td>
+            <td><input type="radio" name='{{_id}}'/>{{option_2}}</td>
+            <td><input type="radio" name='{{_id}}'/>{{option_3}}</td>
+            <td><input type="radio" name='{{_id}}'/>{{option_4}}</td>
+            <td>{{option_final}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+    </div>
+</template>

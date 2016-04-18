@@ -1,0 +1,23 @@
+<template name="admin_vote">
+    <div class="admin_vote">
+        
+        <input type="button" value="开始投票" id='active_vote' />
+        <input type="button" value="重置" id='active_reset' />
+        
+        <h1>投票</h1>
+
+        {{>admin_visitors}}
+
+<form>
+   <p>添加条目</p>    
+    标题<input type="text" id="title" />
+    选项1<input type="text" id="option_1" />
+    选项2<input type="text" id="option_2" />
+    选项3<input type="text" id="option_3" />
+    选项4<input type="text" id="option_4" />
+    <input type="button" value="保存" id='saveItem' />
+</form>
+
+{{>visitor_vote}}
+    </div>
+</template>
