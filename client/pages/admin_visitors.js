@@ -12,11 +12,19 @@ Template.admin_visitors.onRendered(() => {
 
 Template.admin_visitors.helpers({
     visitor_list: () => {
-        return Visitors.find();
+        var sn = 1;
+        return Visitors.find().map((e) => {
+            e.sn = sn++;
+            e.onlineState = e.online ? '是' : '否';
+            e.roleName = {
+                admin: '管理员',
+                visitor: '观众',
+                judge: '评委'
+            }[e.role];
+            return e;
+        });
     },
-    online_helper: (bool) => {
-        return bool ? '是' : '否';
-    }
+
 })
 
 Template.admin_visitors.events({

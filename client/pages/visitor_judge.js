@@ -16,7 +16,11 @@ Template.visitor_judge.helpers({
     role_is_judge: () => {
         // return Visitors.findOne().role == 'judge';
         return true;
+    },
+    judge_hasItem: () => {
+        return Judges.find().count() > 0
     }
+
 })
 
 Template.visitor_judge.events({

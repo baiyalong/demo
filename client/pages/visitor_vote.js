@@ -13,6 +13,9 @@ Template.visitor_vote.helpers({
     vote_list: () => {
         return Votes.find()
     },
+    vote_hasItem: () => {
+        return Votes.find().count() > 0
+    }
 })
 
 Template.visitor_vote.events({
