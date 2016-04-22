@@ -7,7 +7,7 @@ Template.admin_judge.onCreated(() => {
 })
 
 Template.admin_judge.onRendered(() => {
-    Session.set('active', 'judge')
+    Meteor.call('activity.active_judge')
 })
 
 Template.admin_judge.helpers({

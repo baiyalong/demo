@@ -1,7 +1,7 @@
 
 
 Template.admin_layout.onCreated(() => {
-
+    Meteor.subscribe('activities')
 })
 
 Template.admin_layout.onRendered(() => {
@@ -10,12 +10,13 @@ Template.admin_layout.onRendered(() => {
 
 Template.admin_layout.helpers({
     active: function () {
-        var state = Session.get('active')
+        var activity = Activities.findOne({ active: true })
         var res = {
             judge: '',
             vote: ''
         }
-        res[state] = 'active';
+        if (activity)
+            res[activity.name] = 'active';
         return res;
     }
 })

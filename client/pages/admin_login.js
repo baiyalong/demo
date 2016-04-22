@@ -23,11 +23,14 @@ Template.admin_login.events({
         Meteor.loginWithPassword(username, password, (err, res) => {
             if (err) {
                 Session.set('err', err.message)
-                displayError(err);
+                console.log(err)
             }
             else {
                 Session.set('err', null)
-                FlowRouter.go('/admin/judge')
+                Meteor.logoutOtherClients((err) => {
+                    if (err) console.log(err)
+                    else FlowRouter.go('/admin/judge')
+                })
             }
         })
     }

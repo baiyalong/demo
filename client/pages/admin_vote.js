@@ -7,7 +7,7 @@ Template.admin_vote.onCreated(() => {
 })
 
 Template.admin_vote.onRendered(() => {
-    Session.set('active', 'vote')
+    Meteor.call('activity.active_judge')
 })
 
 Template.admin_vote.helpers({
