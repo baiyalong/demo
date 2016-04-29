@@ -1,20 +1,22 @@
 
-Template.visitor_vote.onCreated(() => {
+Template.visitor_vote.onCreated(function () {
     Meteor.subscribe('votes')
-    // Meteor.subscribe('visitors')
 
 })
 
-Template.visitor_vote.onRendered(() => {
+Template.visitor_vote.onRendered(function () {
 
 })
 
 Template.visitor_vote.helpers({
-    vote_list: () => {
+    vote_list: function () {
         return Votes.find()
     },
-    vote_hasItem: () => {
+    vote_hasItem: function () {
         return Votes.find().count() > 0
+    },
+    isAdmin: function () {
+        return Meteor.user() != null && FlowRouter.getRouteName().split('.')[0] == 'admin'
     }
 })
 

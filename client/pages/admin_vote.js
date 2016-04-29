@@ -1,13 +1,13 @@
 
 
 
-Template.admin_vote.onCreated(() => {
+Template.admin_vote.onCreated(function () {
 
 
 })
 
-Template.admin_vote.onRendered(() => {
-    Meteor.call('activity.active_judge')
+Template.admin_vote.onRendered(function () {
+    Meteor.call('activity.active_vote')
 })
 
 Template.admin_vote.helpers({
@@ -32,11 +32,14 @@ Template.admin_vote.events({
             else t.$('#vote_newItemModal').modal('hide')
         })
     },
-    'click #vote_stop': () => {
+    'click #vote_stop': function () {
         Meteor.call('activity.active_vote')
     },
-    'click #vote_reset': () => {
+    'click #vote_reset': function () {
         Meteor.call('activity.reset')
         Meteor.call('vote.clear')
+    }, 
+    'click #vote_removeItem': function (e, t) {
+        Meteor.call('vote.remove', this._id)
     }
 })

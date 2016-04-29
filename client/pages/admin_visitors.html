@@ -7,20 +7,22 @@
             <thead>
                 <tr>
                     <th>序号</th>
-                    <th>标识</th>
                     <th>在线</th>
                     <th>角色</th>
-                    <th></th>
+                    <th>IP地址</th>
+                    <th>详细信息</th>
+                    <th>操作</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each visitor_list}}
-                <tr>
+                <tr id="{{_id}}">
                     <td>{{sn}}</td>
-                    <td>{{_id}}</td>
                     <td>{{onlineState}}</td>
                     <td>{{roleName}}</td>
-                    <td></td>
+                    <td>{{clientAddress}}</td>
+                    <td>{{httpHeaders}}</td>
+                    <td><span class="glyphicon glyphicon-remove"></span></td>
                 </tr>
                 {{/each}}
             </tbody>

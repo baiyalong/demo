@@ -1,12 +1,12 @@
 
 
 
-Template.admin_judge.onCreated(() => {
+Template.admin_judge.onCreated(function () {
 
 
 })
 
-Template.admin_judge.onRendered(() => {
+Template.admin_judge.onRendered(function () {
     Meteor.call('activity.active_judge')
 })
 
@@ -39,11 +39,14 @@ Template.admin_judge.events({
         var number = t.$('#judge_randomNumber').val()
         console.log(number)
     },
-    'click #judge_stop': () => {
+    'click #judge_stop': function () {
         Meteor.call('activity.active_judge')
     },
-    'click #judge_reset': () => {
+    'click #judge_reset': function () {
         Meteor.call('activity.reset')
         Meteor.call('judge.clear')
+    },
+    'click #judge_removeItem': function (e, t) {
+        Meteor.call('judge.remove', this._id)
     }
 })

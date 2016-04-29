@@ -1,9 +1,9 @@
 
-Template.empty_layout.onCreated(()=>{
+Template.empty_layout.onCreated(function(){
     
 })
 
-Template.empty_layout.onRendered(()=>{
+Template.empty_layout.onRendered(function(){
     
 })
 

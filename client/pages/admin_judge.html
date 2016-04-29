@@ -1,21 +1,19 @@
 <template name="admin_judge">
 <div class="container-fluid">
-    <h1>评分</h1>
-    <div class="btn-group btn-group-justified" role="group" aria-label="judge_actions">
-        <div class="btn-group" role="group">
-            <button id='judge_addItem' type="button" class="btn btn-default">添加作品</button>
+    <div class="container-fluid">
+        <div class="col-xs-6">
+            <h1>评分</h1>
         </div>
-        <div class="btn-group" role="group">
-            <button id='judge_random' type="button" class="btn btn-default">随机评委</button>
-        </div>
-        <div class="btn-group" role="group">
-            <button id='judge_reset' type="button" class="btn btn-default">重置</button>
-        </div>
-        <div class="btn-group" role="group">
-            <button id='judge_stop' type="button" class="btn btn-default">终止评分</button>
+        <div class="col-xs-6">
+            <button id='judge_addItem' type="button" class="btn btn-default pull-right">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true">&nbsp;</span>添加作品
+            </button>
+            <button id='judge_random' type="button" class="btn btn-default pull-right">
+                <span class="glyphicon glyphicon-random" aria-hidden="true">&nbsp;</span>随机评委
+            </button>
         </div>
     </div>
-
+<hr/>
 
     <div class="modal fade" id='judge_newItemModal'>
         <div class="modal-dialog">
@@ -72,6 +70,8 @@
     <!-- /.modal -->
 
 
-    {{>visitor_judge}} {{>admin_visitors}}
+    {{>visitor_judge}}
+    <hr/>
+     {{>admin_visitors}}
 </div>
 </template>

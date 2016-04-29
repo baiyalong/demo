@@ -1,4 +1,4 @@
-Meteor.startup(() => {
+Meteor.startup(function () {
 
 
     //visitor online
@@ -9,14 +9,14 @@ Meteor.startup(() => {
             else if (res) localStorage.visitor_id = res;
         })
     } else {
-        Meteor.call('visitor.online', visitor_id, displayError)
+        Meteor.call('visitor.online', visitor_id, displayError);
     }
 
     //visitor role
-    var role = Meteor.userId ? 'admin' : 'audience';
-    Meteor.call('visitor.roleChange', visitor_id, role, displayError)
-
-
-
+    Tracker.autorun(function () {
+        var user = Meteor.user();
+        if (user)
+            Meteor.call('visitor.roleChange', visitor_id, 'admin', displayError)
+    })
 
 })

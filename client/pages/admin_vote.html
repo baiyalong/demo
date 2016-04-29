@@ -1,17 +1,16 @@
 <template name="admin_vote">
 <div class="container-fluid">
-    <h1>投票</h1>
-    <div class="btn-group btn-group-justified" role="group" aria-label="vote_actions">
-        <div class="btn-group" role="group">
-            <button id='vote_addItem' type="button" class="btn btn-default">添加问题</button>
+    <div class="container-fluid">
+        <div class="col-xs-6">
+            <h1>投票</h1>
         </div>
-        <div class="btn-group" role="group">
-            <button id='vote_reset' type="button" class="btn btn-default">重置</button>
-        </div>
-        <div class="btn-group" role="group">
-            <button id='vote_stop' type="button" class="btn btn-default">终止投票</button>
+        <div class="col-xs-6">
+            <button id='vote_addItem' type="button" class="btn btn-default pull-right">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true">&nbsp;</span>添加问题
+            </button>
         </div>
     </div>
+<hr/>
 
 
     <div class="modal fade" id='vote_newItemModal'>
@@ -45,6 +44,8 @@
     </div>
     <!-- /.modal -->
 
-    {{>visitor_vote}} {{>admin_visitors}}
+    {{>visitor_vote}}
+    <hr/>
+     {{>admin_visitors}}
 </div>
 </template>

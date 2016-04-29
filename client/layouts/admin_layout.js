@@ -1,11 +1,11 @@
 
 
-Template.admin_layout.onCreated(() => {
-    Meteor.subscribe('activities')
+Template.admin_layout.onCreated(function () {
+    this.subscribe('activities')
 })
 
-Template.admin_layout.onRendered(() => {
-
+Template.admin_layout.onRendered(function () {
+    
 })
 
 Template.admin_layout.helpers({

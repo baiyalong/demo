@@ -1,11 +1,11 @@
 
 
-Template.admin_login.onCreated(() => {
+Template.admin_login.onCreated(function() {
 
 
 })
 
-Template.admin_login.onRendered(() => {
+Template.admin_login.onRendered(function() {
 
 })
 

@@ -1,10 +1,10 @@
 
-Template.visitor_welcome.onCreated(() => {
+Template.visitor_welcome.onCreated(function() {
 
 
 })
 
-Template.visitor_welcome.onRendered(() => {
+Template.visitor_welcome.onRendered(function() {
 
 })
 

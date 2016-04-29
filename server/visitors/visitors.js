@@ -9,7 +9,9 @@ Visitors.allow({
 Visitors.schema = new SimpleSchema({
   connection_id: { type: String },
   online: { type: Boolean, defaultValue: true },
-  role: { type: String, defaultValue: 'audience' }
+  role: { type: String, defaultValue: 'audience' },
+  clientAddress: { type: String, optional: true },
+  httpHeaders: { type: String, optional: true }
 });
 
 Visitors.attachSchema(Visitors.schema);

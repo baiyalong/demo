@@ -6,31 +6,31 @@
     {{#each vote_list}}
     <div class="panel panel-default" id='{{_id}}'>
         <!-- Default panel contents -->
-        <div class="panel-heading">{{title}}</div>
+        <div class="panel-heading">{{title}}
+            {{#if isAdmin}}
+            <button id='vote_removeItem' type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{/if}}
+        </div>
         <!-- Table -->
         <table class="table table-hover table-condensed">
             <tbody>
                 <tr>
-                    <th><input type="radio" name='{{_id}}' /></th>
-                    <td>{{option_1}}</td>
+                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}'/>&nbsp;&nbsp;{{option_1}}</th>
                     <td>1</td>
                 </tr>
                 <tr>
-                    <th><input type="radio" name='{{_id}}' /></th>
-                    <td>{{option_2}}</td>
+                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}'/>&nbsp;&nbsp;{{option_2}}</th>
                     <td>2</td>
                 </tr>
                 {{#if option_3}}
                 <tr>
-                    <th><input type="radio" name='{{_id}}' /></th>
-                    <td>{{option_3}}</td>
+                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}'/>&nbsp;&nbsp;{{option_3}}</th>
                     <td>3</td>
                 </tr>
                 {{/if}}
                 {{#if option_4}}
                 <tr>
-                    <th><input type="radio" name='{{_id}}' /></th>
-                    <td>{{option_4}}</td>
+                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}'/>&nbsp;&nbsp;{{option_4}}</th>
                     <td>4</td>
                 </tr>
                 {{/if}}

@@ -6,7 +6,11 @@
     {{#each judge_list}}
     <div class="panel panel-default" id='{{_id}}'>
         <!-- Default panel contents -->
-        <div class="panel-heading">{{title}}</div>
+        <div class="panel-heading">{{title}}
+            {{#if isAdmin}}
+            <button id='judge_removeItem' type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{/if}}
+        </div>
         <!-- Table -->
         <table class="table table-hover table-condensed">
             <tbody>
@@ -21,7 +25,7 @@
                 {{#if role_is_judge}}
                 <tr>
                     <th>我的打分</th>
-                    <td><input type="number" /></td>
+                    <td>{{myJudge}}<input type="range" min="0" max="100" step='1' value='0' style='width:80%;float:right'/></td>
                 </tr>
                 {{/if}}
             </tbody>
