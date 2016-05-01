@@ -19,6 +19,7 @@ Judges.schema = new SimpleSchema({
     "scores.$.score": {
         type: Number
     },
+    scoreArr:{type:[Number],defaultValue:[]},
     score_final: { type: Number, defaultValue: 0, min: 0, max: 100 },
 });
 

@@ -14,8 +14,9 @@ Template.visitor_judge.helpers({
         return Judges.find()
     },
     role_is_judge: function () {
-        var visitor = Visitors.findOne()
-        return visitor && visitor.role == 'judge';
+        // var visitor = Visitors.findOne()
+        // return visitor && visitor.role == 'judge';
+        return !(Meteor.user() != null && FlowRouter.getRouteName().split('.')[0] == 'admin');//test
     },
     judge_hasItem: function () {
         return Judges.find().count() > 0
@@ -23,14 +24,13 @@ Template.visitor_judge.helpers({
     isAdmin: function () {
         return Meteor.user() != null && FlowRouter.getRouteName().split('.')[0] == 'admin'
     },
-    myJudge: function () {
-        return Session.get('myJudge') || 0;
-    }
 
 })
 
 Template.visitor_judge.events({
     'change input[type="range"]': function (e, t) {
-        Session.set('myJudge', e.target.value)
+        var score = e.target.value;
+        e.target.previousSibling.textContent = score;
+        Meteor.call('judge.visitor_judge', this._id, score);
     }
 })

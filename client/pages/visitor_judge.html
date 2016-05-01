@@ -20,12 +20,12 @@
                 </tr>
                 <tr>
                     <th>评委打分</th>
-                    <td>{{scores}}</td>
+                    <td>{{score_final}}<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>{{scoreArr}}</td>
                 </tr>
                 {{#if role_is_judge}}
                 <tr>
                     <th>我的打分</th>
-                    <td>{{myJudge}}<input type="range" min="0" max="100" step='1' value='0' style='width:80%;float:right'/></td>
+                    <td><span class=".rangeValue">0</span><input type="range" min="0" max="100" step='1' value='0' style='width:80%;float:right'/></td>
                 </tr>
                 {{/if}}
             </tbody>
