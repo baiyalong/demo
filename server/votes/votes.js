@@ -13,6 +13,10 @@ Votes.schema = new SimpleSchema({
     option_2: { type: String },
     option_3: { type: String, optional: true },
     option_4: { type: String, optional: true },
+    vote_1: { type: String, optional: true },
+    vote_2: { type: String, optional: true },
+    vote_3: { type: String, optional: true },
+    vote_4: { type: String, optional: true },
     votes: { type: [Object], defaultValue: [] },
     "votes.$.visitor_id": {
         type: String

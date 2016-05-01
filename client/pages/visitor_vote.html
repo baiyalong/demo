@@ -15,23 +15,23 @@
         <table class="table table-hover table-condensed">
             <tbody>
                 <tr>
-                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}'/>&nbsp;&nbsp;{{option_1}}</th>
-                    <td>1</td>
+                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}' value="1"/>&nbsp;&nbsp;{{option_1}}</th>
+                    <td>{{vote_1}}</td>
                 </tr>
                 <tr>
-                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}'/>&nbsp;&nbsp;{{option_2}}</th>
-                    <td>2</td>
+                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}' value="2"/>&nbsp;&nbsp;{{option_2}}</th>
+                    <td>{{vote_2}}</td>
                 </tr>
                 {{#if option_3}}
                 <tr>
-                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}'/>&nbsp;&nbsp;{{option_3}}</th>
-                    <td>3</td>
+                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}' value="3"/>&nbsp;&nbsp;{{option_3}}</th>
+                    <td>{{vote_3}}</td>
                 </tr>
                 {{/if}}
                 {{#if option_4}}
                 <tr>
-                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}'/>&nbsp;&nbsp;{{option_4}}</th>
-                    <td>4</td>
+                    <th><input type="radio" name='{{_id}}' disabled='{{isAdmin}}' value="4"/>&nbsp;&nbsp;{{option_4}}</th>
+                    <td>{{vote_4}}</td>
                 </tr>
                 {{/if}}
             </tbody>

@@ -21,5 +21,7 @@ Template.visitor_vote.helpers({
 })
 
 Template.visitor_vote.events({
-
+    'change input[type="radio"]': function (e, t) {
+        Meteor.call('vote.visitor_vote',this._id,Number(e.target.value))
+    }
 })
