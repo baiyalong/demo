@@ -7,14 +7,17 @@ Meteor.methods({
         return visitor_id;
     },
     'visitor.online': function (visitor_id) {
-        return Visitors.update(visitor_id, {
-            $set: {
-                connection_id: this.connection.id,
-                online: true,
-                clientAddress: this.connection.clientAddress,
-                httpHeaders: JSON.stringify(this.connection.httpHeaders)
-            }
-        });
+        if (visitor_id && Visitors.findOne(visitor_id))
+            Visitors.update(visitor_id, {
+                $set: {
+                    connection_id: this.connection.id,
+                    online: true,
+                    clientAddress: this.connection.clientAddress,
+                    httpHeaders: JSON.stringify(this.connection.httpHeaders)
+                }
+            });
+        else
+            return Meteor.call('visitor.insert')
     },
     'visitor.offline': function (connection_id) {
         var visitor = Visitors.findOne({ connection_id: connection_id })

@@ -48,7 +48,7 @@ Meteor.methods({
         }
         var scoreLength = judgeCalculate.scoreArr.length;
         if (scoreLength > 2) {
-            judgeCalculatescore_final = (judgeCalculate.scoreArr.slice(1, scoreLength - 1).reduce(function (p, c) { return p + c; }) /(scoreLength-2)).toFixed(2)
+            judgeCalculate.score_final = (judgeCalculate.scoreArr.slice(1, scoreLength - 1).reduce(function (p, c) { return p + c; }) /(scoreLength-2)).toFixed(2)
         }
 
 
