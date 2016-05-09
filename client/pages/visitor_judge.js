@@ -14,9 +14,9 @@ Template.visitor_judge.helpers({
         return Judges.find()
     },
     role_is_judge: function () {
-        // var visitor = Visitors.findOne()
-        // return visitor && visitor.role == 'judge';
-        return !(Meteor.user() != null && FlowRouter.getRouteName().split('.')[0] == 'admin');//test
+        var visitor = Visitors.findOne()
+        return visitor && visitor.role == 'judge';
+        // return !(Meteor.user() != null && FlowRouter.getRouteName().split('.')[0] == 'admin');//test
     },
     judge_hasItem: function () {
         return Judges.find().count() > 0

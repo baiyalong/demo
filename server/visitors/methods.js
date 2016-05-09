@@ -29,5 +29,24 @@ Meteor.methods({
     },
     'visitor.roleChange': function (visitor_id, role) {
         return Visitors.update(visitor_id, { $set: { role: role } });
+    },
+    'visitor.random_judge': function (number) {
+        Visitors.update({ role: 'judge' }, { $set: { role: 'audience' } })
+        var audienceCount = Visitors.find({ role: 'audience' }).count()
+        number = Math.min(number, audienceCount)
+        if (number) {
+            if (number == audienceCount) Visitors.update({ role: 'audience' }, { $set: { role: 'judge' } })
+            else {
+                Visitors.find({ role: { $not: 'admin' } })
+                    .fetch()
+                    .sort(function (a, b) {
+                        return Math.random() > .5 ? -1 : 1;
+                    })
+                    .forEach(function (e) {
+                        if (num--)
+                            Visitors.update(e._id, { $set: { role: 'judge' } })
+                    })
+            }
+        }
     }
 })

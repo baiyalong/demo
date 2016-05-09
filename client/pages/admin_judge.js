@@ -37,7 +37,9 @@ Template.admin_judge.events({
     'click #judge_cancelRandom': (e, t) => { },
     'click #judge_saveRandom': (e, t) => {
         var number = t.$('#judge_randomNumber').val()
-        console.log(number)
+        if (isNaN(number)) number = 0;
+        number = Math.max(number, 0)
+        Meteor.call('visitor.random_judge', number)
     },
     'click #judge_stop': function () {
         Meteor.call('activity.active_judge')
