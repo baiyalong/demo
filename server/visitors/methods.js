@@ -31,11 +31,11 @@ Meteor.methods({
         return Visitors.update(visitor_id, { $set: { role: role } });
     },
     'visitor.random_judge': function (number) {
-        Visitors.update({ role: 'judge' }, { $set: { role: 'audience' } })
+        Visitors.update({ role: 'judge' }, { $set: { role: 'audience' } }, { multi: true })
         var audienceCount = Visitors.find({ role: 'audience' }).count()
         number = Math.min(number, audienceCount)
         if (number) {
-            if (number == audienceCount) Visitors.update({ role: 'audience' }, { $set: { role: 'judge' } })
+            if (number == audienceCount) Visitors.update({ role: 'audience' }, { $set: { role: 'judge' } }, { multi: true })
             else {
                 Visitors.find({ role: { $not: 'admin' } })
                     .fetch()
