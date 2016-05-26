@@ -57,7 +57,13 @@ Meteor.methods({
             $set: voteCalculate
         })
     },
-    'vote.cancel':function(visitor_id){
-        
+    'vote.cancel': function (visitor_id) {
+        Votes.update(
+            {},
+            { $pull: { votes: { visitor_id: visitor_id } } },
+            { multi: true })
+        Votes.find().fetch().forEach(function (e) {
+            Meteor.call('vote.calculate', e._id)
+        })
     }
 })

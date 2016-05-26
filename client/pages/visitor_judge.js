@@ -22,7 +22,7 @@ Template.visitor_judge.helpers({
         return Judges.find().count() > 0
     },
     isAdmin: function () {
-        return Meteor.user() != null && FlowRouter.getRouteName().split('.')[0] == 'admin'
+        return Meteor.user() != null || FlowRouter.getRouteName().split('.')[0] == 'admin'
     },
 
 })

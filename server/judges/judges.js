@@ -1,7 +1,7 @@
 
 
 // Deny all client-side updates since we will be using methods to manage this collection
-Judges.allow({
+Judges.deny({
     insert() { return true; },
     update() { return true; },
     remove() { return true; },
@@ -19,8 +19,8 @@ Judges.schema = new SimpleSchema({
     "scores.$.score": {
         type: Number
     },
-    scoreArr:{type:[Number],defaultValue:[]},
-    score_final: { type: Number, defaultValue: 0, min: 0, max: 100 },
+    scoreArr: { type: [Number], defaultValue: [] },
+    score_final: { type: Number, decimal: true, defaultValue: 0, min: 0, max: 100 },
 });
 
 Judges.attachSchema(Judges.schema);

@@ -1,5 +1,6 @@
 <template name="admin_layout">
-    <nav class="navbar navbar-default">
+{{#if connected}}
+<nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -26,5 +27,9 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-    {{>Template.dynamic template=main}}
+{{>Template.dynamic template=main}} 
+{{else}}
+<p class="text-center lead" style="margin-top:100px">连接已断开,<a href="" id="reconnect">重新连接</a></p>
+<p class="text-center small">{{status}}</p>
+{{/if}}
 </template>

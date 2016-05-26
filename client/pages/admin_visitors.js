@@ -32,5 +32,8 @@ Template.admin_visitors.helpers({
 Template.admin_visitors.events({
     'click .visitor_remove': function (e, t) {
         Meteor.call('visitor.remove', this._id)
+    },
+    'click .visitor_screen': function (e, t) {
+        Meteor.call('visitor.screen', this._id)
     }
 })

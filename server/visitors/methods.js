@@ -11,6 +11,14 @@ Meteor.methods({
         Meteor.call('vote.cancel', _id)
         return Visitors.remove(_id)
     },
+    'visitor.screen': function (_id) {
+        var visitor = Visitors.findOne(_id)
+        if (visitor) {
+            Meteor.call('judge.cancel', _id)
+            Meteor.call('vote.cancel', _id)
+            return Visitors.update(_id, { $set: { screen: !visitor.screen } })
+        }
+    },
     'visitor.online': function (visitor_id) {
         if (visitor_id && Visitors.findOne(visitor_id))
             Visitors.update(visitor_id, {

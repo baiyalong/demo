@@ -23,6 +23,14 @@ Template.admin_layout.helpers({
         if (activity)
             res[activity.name] = 'active';
         return res;
+    },
+    connected: function () {
+        var status = Meteor.status()
+        return status ? status.connected : false;
+    },
+    status: function () {
+        var status = Meteor.status()
+        return status ? JSON.stringify(status) : '';
     }
 })
 
@@ -32,5 +40,8 @@ Template.admin_layout.events({
     },
     'click #vote': (e, t) => {
         FlowRouter.go('/admin/vote')
+    },
+    'click #reconnect': function () {
+        Meteor.reconnect()
     }
 })

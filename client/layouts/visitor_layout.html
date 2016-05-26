@@ -1,3 +1,12 @@
 <template name="visitor_layout">
-    {{>Template.dynamic template=main}}
+{{#if screen}}
+    <p class="text-center lead" style="margin-top:100px;color:red;">当前用户已被屏蔽</p>
+{{else}}
+    {{#if connected}} 
+        {{>Template.dynamic template=main}} 
+    {{else}} 
+        <p class="text-center lead" style="margin-top:100px">连接已断开,<a href="" id="reconnect">重新连接</a></p>
+        <p class="text-center small">{{status}}</p>
+    {{/if}}
+{{/if}}
 </template>

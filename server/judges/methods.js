@@ -57,14 +57,11 @@ Meteor.methods({
         })
     },
     'judge.cancel': function (visitor_id) {
-        // Judges.update(
-        //     {},
-        //     { $pull: { scores: { $elemMatch: { visitor_id: visitor_id } } } },
-        //     { multi: true })
+        Judges.update(
+            {},
+            { $pull: { scores: { visitor_id: visitor_id } } },
+            { multi: true })
         Judges.find().fetch().forEach(function (e) {
-            Judges.update(e._id, {
-                $pullAll: { scores: { $elemMatch: { visitor_id: visitor_id } } }
-            })
             Meteor.call('judge.calculate', e._id)
         })
     }

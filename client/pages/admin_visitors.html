@@ -16,13 +16,17 @@
             </thead>
             <tbody>
                 {{#each visitor_list}}
-                <tr id="{{_id}}">
+                <tr id="{{_id}}" style="{{#if screen}}color:red{{/if}}">
                     <td>{{sn}}</td>
                     <td>{{onlineState}}</td>
                     <td>{{roleName}}</td>
                     <td>{{clientAddress}}</td>
                     <td>{{userAgent}}</td>
-                    <td><span class="glyphicon glyphicon-remove visitor_remove"></span></td>
+                    <td>
+                        <span class="glyphicon glyphicon-ban-circle visitor_screen"></span>
+                        <hr style="margin:10px 0"/>
+                        <span class="glyphicon glyphicon-remove visitor_remove"></span>
+                    </td>
                 </tr>
                 {{/each}}
             </tbody>
