@@ -15,12 +15,12 @@ Meteor.startup(function () {
             Meteor.call('visitor.roleChange', visitor_id, 'admin', displayError)
     })
 
-    //connection status
-    const retryTimes = 10;
-    Tracker.autorun(function () {
-        var status = Meteor.status();
-        if (status.connected == false && status.retryCount < retryTimes)
-            Meteor.reconnect()
-    })
+    // //connection status
+    // const retryTimes = 10;
+    // Tracker.autorun(function () {
+    //     var status = Meteor.status();
+    //     if (status.connected == false && status.retryCount < retryTimes)
+    //         Meteor.reconnect()
+    // })
 
 })
