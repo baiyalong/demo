@@ -4,13 +4,20 @@ Template.visitor_layout.onCreated(function () {
     this.subscribe('visitors')
     this.subscribe('activities')
     this.autorun(function () {
-        var activity = Activities.findOne({ active: true })
-        FlowRouter.go(activity ? activity.route : '/visitor/welcome')
+        if (Template.instance().subscriptionsReady()) {
+            var activity = Activities.findOne({ active: true })
+            FlowRouter.go(activity ? activity.route : '/visitor/welcome')
+        }
     })
 })
 
 Template.visitor_layout.onRendered(function () {
-
+    this.autorun(function () {
+        if (Template.instance().subscriptionsReady()) {
+            var visitor = Visitors.findOne();
+            Session.set('screen', visitor ? visitor.screen : true)
+        }
+    });
 })
 
 Template.visitor_layout.helpers({
@@ -23,8 +30,8 @@ Template.visitor_layout.helpers({
         return status ? JSON.stringify(status) : '';
     },
     screen: function () {
-        var visitor = Visitors.findOne();
-        return visitor ? visitor.screen : false;
+        var screen = Session.get('screen')
+        return screen ? screen : false;
     }
 })
 
