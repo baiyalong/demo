@@ -17,10 +17,11 @@ Meteor.startup(function () {
 
     // //connection status
     // const retryTimes = 10;
-    // Tracker.autorun(function () {
-    //     var status = Meteor.status();
-    //     if (status.connected == false && status.retryCount < retryTimes)
-    //         Meteor.reconnect()
-    // })
+    Tracker.autorun(function () {
+        var status = Meteor.status();
+        console.log(status)
+        // if (status.connected == false && status.retryCount < retryTimes)
+        //     Meteor.reconnect()
+    })
 
 })

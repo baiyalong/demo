@@ -48,12 +48,24 @@ Meteor.methods({
         }
         var scoreLength = judgeCalculate.scoreArr.length;
         if (scoreLength > 2) {
-            judgeCalculate.score_final = (judgeCalculate.scoreArr.slice(1, scoreLength - 1).reduce(function (p, c) { return p + c; }) /(scoreLength-2)).toFixed(2)
+            judgeCalculate.score_final = (judgeCalculate.scoreArr.slice(1, scoreLength - 1).reduce(function (p, c) { return p + c; }) / (scoreLength - 2)).toFixed(2)
         }
 
 
         Judges.update(_id, {
             $set: judgeCalculate
+        })
+    },
+    'judge.cancel': function (visitor_id) {
+        // Judges.update(
+        //     {},
+        //     { $pull: { scores: { $elemMatch: { visitor_id: visitor_id } } } },
+        //     { multi: true })
+        Judges.find().fetch().forEach(function (e) {
+            Judges.update(e._id, {
+                $pullAll: { scores: { $elemMatch: { visitor_id: visitor_id } } }
+            })
+            Meteor.call('judge.calculate', e._id)
         })
     }
 

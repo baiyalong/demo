@@ -1,7 +1,7 @@
 
 Template.visitor_judge.onCreated(function () {
-    Meteor.subscribe('judges')
-    Meteor.subscribe('visitors')
+    this.subscribe('judges')
+    this.subscribe('visitors')
 
 })
 

@@ -2,7 +2,7 @@
 
 Template.visitor_layout.onCreated(function() {
     this.subscribe('activities')
-    Tracker.autorun(function() {
+    this.autorun(function() {
         var activity = Activities.findOne({ active: true })
         FlowRouter.go(activity ? activity.route : '/visitor/welcome')
     })

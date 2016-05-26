@@ -56,5 +56,8 @@ Meteor.methods({
         Votes.update(_id, {
             $set: voteCalculate
         })
+    },
+    'vote.cancel':function(visitor_id){
+        
     }
 })

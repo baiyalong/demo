@@ -1,6 +1,6 @@
 
 Template.visitor_vote.onCreated(function () {
-    Meteor.subscribe('votes')
+    this.subscribe('votes')
 
 })
 
@@ -16,12 +16,12 @@ Template.visitor_vote.helpers({
         return Votes.find().count() > 0
     },
     isAdmin: function () {
-        return Meteor.user() != null && FlowRouter.getRouteName().split('.')[0] == 'admin'
+        return Meteor.user() != null || FlowRouter.getRouteName().split('.')[0] == 'admin'
     }
 })
 
 Template.visitor_vote.events({
     'change input[type="radio"]': function (e, t) {
-        Meteor.call('vote.visitor_vote',this._id,Number(e.target.value))
+        Meteor.call('vote.visitor_vote', e.target.name, Number(e.target.value))
     }
 })

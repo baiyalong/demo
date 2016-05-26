@@ -5,7 +5,12 @@ Template.admin_layout.onCreated(function () {
 })
 
 Template.admin_layout.onRendered(function () {
-    
+    this.autorun(function () {
+        if (Template.instance().subscriptionsReady()) {
+            var user = Meteor.user();
+            if (!user) FlowRouter.go('/admin/login')
+        }
+    })
 })
 
 Template.admin_layout.helpers({

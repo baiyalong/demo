@@ -6,6 +6,11 @@ Meteor.methods({
         Meteor.call('visitor.online', visitor_id);
         return visitor_id;
     },
+    'visitor.remove': function (_id) {
+        Meteor.call('judge.cancel', _id)
+        Meteor.call('vote.cancel', _id)
+        return Visitors.remove(_id)
+    },
     'visitor.online': function (visitor_id) {
         if (visitor_id && Visitors.findOne(visitor_id))
             Visitors.update(visitor_id, {
@@ -23,6 +28,8 @@ Meteor.methods({
         var visitor = Visitors.findOne({ connection_id: connection_id })
         if (visitor) {
             Visitors.update(visitor._id, { $set: { online: false } });
+            Meteor.call('judge.cancel', visitor._id)
+            Meteor.call('vote.cancel', visitor._id)
             if (visitor.role == 'admin' && Visitors.find({ role: 'admin', online: true }).count() == 0)
                 Meteor.call('activity.reset')
         }
@@ -32,18 +39,18 @@ Meteor.methods({
     },
     'visitor.random_judge': function (number) {
         Visitors.update({ role: 'judge' }, { $set: { role: 'audience' } }, { multi: true })
-        var audienceCount = Visitors.find({ role: 'audience' }).count()
+        var audienceCount = Visitors.find({ role: 'audience', online: true }).count()
         number = Math.min(number, audienceCount)
         if (number) {
-            if (number == audienceCount) Visitors.update({ role: 'audience' }, { $set: { role: 'judge' } }, { multi: true })
+            if (number == audienceCount) Visitors.update({ role: 'audience', online: true }, { $set: { role: 'judge' } }, { multi: true })
             else {
-                Visitors.find({ role: { $not: 'admin' } })
+                Visitors.find({ role: 'audience', online: true })
                     .fetch()
                     .sort(function (a, b) {
                         return Math.random() > .5 ? -1 : 1;
                     })
                     .forEach(function (e) {
-                        if (num--)
+                        if (number--)
                             Visitors.update(e._id, { $set: { role: 'judge' } })
                     })
             }
