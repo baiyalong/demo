@@ -57,8 +57,8 @@ Meteor.methods({
                     .sort(function (a, b) {
                         return Math.random() > .5 ? -1 : 1;
                     })
-                    .forEach(function (e) {
-                        if (number--)
+                    .forEach(function (e, i) {
+                        if (number > i)
                             Visitors.update(e._id, { $set: { role: 'judge' } })
                     })
             }
